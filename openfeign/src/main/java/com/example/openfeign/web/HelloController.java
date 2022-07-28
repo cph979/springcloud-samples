@@ -23,7 +23,7 @@ public class HelloController {
 
     @GetMapping("/hello")
     public String hello() {
-        return helloProviderApi.helloApi();
+        return helloProviderApi.hello();
     }
 
     @GetMapping("/hello2")

@@ -1,5 +1,6 @@
 package com.example.openfeign.service;
 
+import com.example.api.service.HelloServiceApi;
 import com.example.commons.User;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
@@ -11,9 +12,9 @@ import java.util.Map;
  * @date 2022/07/26
  */
 @FeignClient("provider")
-public interface HelloProviderApi {
+public interface HelloProviderApi extends HelloServiceApi {
 
-    @GetMapping("/hello")
+    /*@GetMapping("/hello")
     String helloApi();
 
     @GetMapping("/hello2")
@@ -23,6 +24,6 @@ public interface HelloProviderApi {
     Map<String, Object> mapApi(@RequestParam Map<String, Object> map);
 
     @PostMapping("/hello5")
-    User userApi(@RequestBody User user);
+    User userApi(@RequestBody User user);*/
 
 }

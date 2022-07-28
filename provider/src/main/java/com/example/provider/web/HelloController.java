@@ -1,5 +1,6 @@
 package com.example.provider.web;
 
+import com.example.api.service.HelloServiceApi;
 import com.example.commons.User;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
@@ -11,12 +12,13 @@ import java.util.Map;
  * @date 2022/07/17
  */
 @RestController
-public class HelloController {
+public class HelloController implements HelloServiceApi {
 
     @Value("${server.port}")
     private int port;
 
-    @GetMapping("/hello")
+    // @GetMapping("/hello")
+    @Override
     public String hello() {
         return "Hello Cloud：" + port;
     }
@@ -50,5 +52,21 @@ public class HelloController {
     @DeleteMapping("hello7/{id}")
     public void hello7(@PathVariable Integer id) {
         System.out.println("H7" + id);
+    }
+
+    /* openfeign 继承特性 */
+    @Override
+    public String hello2Api(String name) {
+        return "Hello Cloud：" + port + "：" + name;
+    }
+
+    @Override
+    public Map<String, Object> mapApi(Map<String, Object> map) {
+        return map;
+    }
+
+    @Override
+    public User userApi(User user) {
+        return user;
     }
 }
